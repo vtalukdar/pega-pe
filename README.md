@@ -7,14 +7,16 @@ BEFORE WE START :
   
 The following softwares are required: 
 
-  — PEGA Personal Edition 8.7 . The default downloaded ZIP folder needs to be unzipped, and kept ready.
-  — Parallels Software. Download and install the free version of the software
-  — Install Debian on the Parallels Software : use the default version provided in the application, and it downloads and installs it automatically.
+  —- PEGA Personal Edition 8.7 . The default downloaded ZIP folder needs to be unzipped, and kept ready.
+  —- UTM. It can be downloaded here : https://mac.getutm.app/. It is completely free.
+  —- Debian 11 XFCE. Download it from this link : https://mac.getutm.app/gallery/debian-11-xfce 
 
-The PEGA server would need at least 8GB of RAM to function, and 12 GB for optimal performance.  We also need to first install Parallels and then install a Debian Linux GNU box on Parallels software. Both are available for free, and very easy to setup. Once the Virtual Machine (VM) is setup, shut it down, go to Configuration —> Hardware and allocate either 8GB or 12GB RAM to it. Strong recommendation here is to use 12GB RAM for this box.
+The PEGA server would need at least 12GB of RAM to function, and 16 GB for optimal performance. Use the Graphical install option within Debian , and complete the Debian installation within UTM. Both are available for free, and very easy to setup. Once the Virtual Machine (VM) is setup, shut it down, go to Configuration —> Hardware and allocate either 8GB or 12GB RAM to it. Strong recommendation here is to use 16GB RAM for this box.
+
+
+PLEASE NOTE : I have given the user name as "victor", so the debian box is referred as victor@<IP Address>. Use appropriate name while installing it.
 
 Once the vm is ready the following steps needs to be performed on the VM :
-
 
 
 ### Step 1
@@ -27,7 +29,7 @@ Once the VM is up, go to the terminal inside the VM , and get the IP address by 
 
 Now, minimize the VM, go into the Mac Terminal and SSH to the Linux VM using the command :
 
-    ssh parallels@<IP Address>
+    ssh victor@<IP Address>
 
 You will be prompted for password. This password will be the default password set of Parallels ID in Debian VM
 
@@ -42,7 +44,7 @@ Install GIT on the VM , by the below set of commands :
  
 Now run the below git command to clone the required script.
 
-    git clone https://github.com/sunilsankar/pega-pe.git
+    git clone https://github.com/vtalukdar/pega-pe.git
 
 Now go inside the pega-pe folder, and execute the install script using the below set of commands : 
 
@@ -57,7 +59,7 @@ Now, before any further steps are taken , go to the PEGA Personal Edition folder
 
     cd Downloads/117149_PE_8.7/data
 
-    scp -r *.dump parallels@<IP Address>:
+    scp -r *.dump victor@<IP Address>:
 
 
 ### Step 6
@@ -68,7 +70,7 @@ Switch to root:
 
 Move the folders into  the required folders: 
 
-    mv /home/parallels/*.dump /var/lib/postgresql 
+    mv /home/victor/*.dump /var/lib/postgresql 
 
 Provide required access to the postgres user
 
@@ -121,13 +123,13 @@ Now, before any other steps are taken on the VM,  inspect the Personal Edition z
 In the same path as before, go inside tomcat/webapps folder. There are 
 
 
-    scp -r *.war parallels@<IP Address>:
+    scp -r *.war victor@<IP Address>:
 
 The above command moves the file to the home folder. Now from there, move the files to the required folder, which is inside the tomcat application installed in Step 4
 
     sudo su -
 
-    mv /home/parallels/*.war /opt/apache-tomcat-8.5.14/webapps
+    mv /home/victor/*.war /opt/apache-tomcat-8.5.14/webapps
 
 
 ### Step 11
