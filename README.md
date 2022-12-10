@@ -7,9 +7,9 @@ BEFORE WE START :
   
 The following softwares are required: 
 
-  —- PEGA Personal Edition 8.7 . The default downloaded ZIP folder needs to be unzipped, and kept ready.
-  —- UTM. It can be downloaded here : https://mac.getutm.app/. It is completely free.
-  —- Debian 11 XFCE. Download it from this link : https://mac.getutm.app/gallery/debian-11-xfce 
+  ### PEGA Personal Edition 8.7 . The default downloaded ZIP folder needs to be unzipped, and kept ready.
+  ### UTM. It can be downloaded here : https://mac.getutm.app/. It is completely free.
+  ### Debian 11 XFCE. Download it from this link : https://mac.getutm.app/gallery/debian-11-xfce 
 
 The PEGA server would need at least 12GB of RAM to function, and 16 GB for optimal performance. Use the Graphical install option within Debian , and complete the Debian installation within UTM. Both are available for free, and very easy to setup. Once the Virtual Machine (VM) is setup, shut it down, go to Configuration —> Hardware and allocate either 8GB or 12GB RAM to it. Strong recommendation here is to use 16GB RAM for this box.
 
